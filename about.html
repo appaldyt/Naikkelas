@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Naik Kelas</title>
+    <link rel="icon" href="data:image/svgxml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjU2IDU2TDU2IDE2Mi41VjE4NEwyNTYgMjkwLjVMNDU2IDE4NFYxNjIuNUwyNTYgNTZaIiBmaWxsPSIjMzY4NWZmIi8PHBhdGggZD0iTTQ1NiAyMDhMNDEzIDIyOFYzMTBDMzkwLjUgMzQ0LjUgMzUxIDM3NiAyNTYgMzc2QzE2MSAzNzYgMTIxLjUgMzQ0LjUgOTkgMzEwVjIyOEw1NiAyMDhWMzM2Qzg3LjUgMzkwLjUgMTU4IDQ1NiAyNTYgNDU2QzM1NCA0NTYgNDI0LjUgMzkwLjUgNDU2IDMzNlYyMDhaIiBmaWxsPSIjMzY4NWZmIi8PHBhdGggZD0iTTM2OCAyNDJWMzA2LjVMMzk2IDI4MlYyMjNMMzY4IDI0MloiIGZpbGw9IiMzNjg1ZmYiLz48cGF0aCBkPSJNMTY5IDIzMkwxNTEgMjI4LjVMMTQzIDI1MkwxNjAgMjUwTDE2OSAyMzJaIiBzdHJva2U9IiMzNjg1ZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8PHBhdGggZD0iTTE2OSAyMzJMMjI1IDI0NUwyOTYgMjQwLjVMMzQwIDIxMiIgc3Ryb2tlPSIjMzY4NWZmIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==" type="image/svgxml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="shadcn-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .about-hero {
+            padding: 4rem 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 960px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem 3rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .about-card {
+            border-radius: 0.75rem;
+            background-color: white;
+            box-shadow: 0 10px 25px -15px rgba(15, 23, 42, 0.35);
+            padding: 2rem;
+            border: 1px solid hsl(var(--border));
+            text-align: left;
+        }
+
+        .portfolio-section {
+            max-width: 1080px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .portfolio-carousel {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.75rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: hsl(var(--muted)) transparent;
+            padding-inline: 0.25rem;
+            align-items: stretch;
+        }
+
+        .portfolio-carousel::-webkit-scrollbar {
+            height: 0.6rem;
+        }
+
+        .portfolio-carousel::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .portfolio-carousel::-webkit-scrollbar-thumb {
+            background: hsl(var(--muted));
+            border-radius: 9999px;
+        }
+
+        .portfolio-carousel::-webkit-scrollbar-thumb:hover {
+            background: hsl(var(--primary) / 0.6);
+        }
+
+        .portfolio-card {
+            border-radius: 1rem;
+            border: 1px solid hsl(var(--border));
+            background: white;
+            box-shadow: 0 20px 45px -25px rgba(15, 23, 42, 0.4);
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            width: 340px;
+            max-width: 340px;
+            min-height: 280px;
+            scroll-snap-align: start;
+            flex: 0 0 340px;
+        }
+
+        @media (max-width: 640px) {
+            .portfolio-card {
+                width: 280px;
+                max-width: 280px;
+                flex: 0 0 280px;
+            }
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 60px -32px rgba(15, 23, 42, 0.45);
+        }
+
+        .portfolio-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            line-height: 1.45;
+        }
+
+        .portfolio-desc {
+            color: hsl(var(--muted-foreground));
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .portfolio-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            border: 1px solid hsl(var(--border));
+            background: hsl(var(--primary));
+            color: white;
+            padding: 0.65rem 1.4rem;
+            transition: background-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .portfolio-action:hover {
+            background: hsl(var(--primary) / 0.9);
+            box-shadow: 0 12px 25px -18px rgba(37, 99, 235, 0.5);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            border: 1px solid hsl(var(--border));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: hsl(var(--foreground));
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            background-color: hsl(var(--primary) / 0.08);
+            color: hsl(var(--primary));
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            border-top: 1px solid hsl(var(--border));
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="border-b border-border/60 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="inline-flex items-center gap-3 font-semibold text-lg">
+                <svg class="w-9 h-9 text-primary" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M256 56L56 162.5V184L256 290.5L456 184V162.5L256 56Z" />
+                    <path d="M456 208L413 228V310C390.5 344.5 351 376 256 376C161 376 121.5 344.5 99 310V228L56 208V336C87.5 390.5 158 456 256 456C354 456 424.5 390.5 456 336V208Z" />
+                </svg>
+                Naik Kelas
+            </a>
+            <a href="index.html" class="shadcn-btn shadcn-btn-primary">Masuk</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <p class="uppercase tracking-[0.3em] text-xs text-muted-foreground mb-4">Tentang Kami</p>
+            <h1 class="text-4xl font-bold mb-4 text-foreground">Naik kelas bareng engga cuma kerja bareng</h1>
+            <p class="text-muted-foreground text-lg leading-8 max-w-3xl mx-auto">
+                Naik Kelas adalah ruang pengembangan diri bagi seluruh anggota HCBP & Talent Group tempat di mana setiap orang bisa saling belajar, berbagi cerita, dan tumbuh bersama.
+Program ini dirancang agar kerja tim bukan sekadar rutinitas, tapi juga perjalanan reflektif dan kolaboratif yang memperkuat hubungan, menumbuhkan empati, serta memantik ide-ide baru.
+            </p>
+            <p class="text-muted-foreground text-lg leading-8 max-w-3xl mx-auto">
+              Kami percaya, kemajuan bukan hanya soal hasil kerja, tapi tentang bagaimana kita naik kelas bareng dengan semangat terbuka, saling mendukung, dan terus bereksperimen untuk jadi versi terbaik diri sendiri.  
+            </p>
+            <div class="social-links" aria-label="Ikuti Naik Kelas di media sosial">
+                <a class="social-link" href="video-detail.html" aria-label="Video Naik Kelas">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                        <path d="M21.6 6.2a2.514 2.514 0 00-1.77-1.77C18.19 4 12 4 12 4s-6.19 0-7.83.43A2.514 2.514 0 002.4 6.2 26.2 26.2 0 002 12a26.2 26.2 0 00.4 5.8 2.514 2.514 0 001.77 1.77C5.81 20 12 20 12 20s6.19 0 7.83-.43a2.514 2.514 0 001.77-1.77A26.2 26.2 0 0022 12a26.2 26.2 0 00-.4-5.8zM10 15.5v-7l6 3.5z" />
+                    </svg>
+                </a>
+                <a class="social-link" href="gallery.html" aria-label="Galeri Naik Kelas">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                        <path d="M21 5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2zm-2 0v7.586l-2.293-2.293a1 1 0 00-1.414 0L12 13.586l-1.293-1.293a1 1 0 00-1.414 0L5 16.586V5zm0 14H5v-.586l4-4 2 2 3.293-3.293L19 17.414z" />
+                        <path d="M7.5 9a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <section class="about-content md:grid-cols-2">
+            <article class="about-card">
+                <h2 class="text-2xl font-semibold mb-3">Misi Kami</h2>
+                <p class="text-muted-foreground leading-7">
+                    Kami ingin menciptakan lingkungan kerja yang penuh semangat belajar, kolaborasi, dan keberanian untuk berekspresi. serta menjadikan setiap interaksi di HCBP & Talent sebagai ruang tumbuh bersama bukan hanya soal kerja, tapi soal berkembang sebagai manusia.
+                </p>
+            </article>
+            <article class="about-card">
+                <h2 class="text-2xl font-semibold mb-3">Daftar Kelas</h2>
+                <ul class="list-disc list-inside text-muted-foreground leading-7 space-y-2">
+                    <li><b>Kelas Cerita</b> : Memberikan ruang untuk lebih ekspresif, memperkuat empati, dan melatih kemampuan dalam komunikasi & presentasi.</li>
+                    <li><b>Kelas Marathon</b> : Membuat simulasi berbasis kolaborasi tim yang dirancang untuk melatih keterampilan berfikir kritis, & problem-solving.</li>
+                    <li><b>Kelas Arah</b> : Program Coaching & Counselling untuk mengarahkan tujuan dan menguatkan langkah kerja dengan cara  saling mendengarkan, bercerita, dan merefleksi pengalaman hidup, tantangan, serta aspirasi masing-masing antara atasan & team.</li>
+                </ul>
+            </article>
+            <article class="about-card">
+                <h2 class="text-2xl font-semibold mb-3">Nilai-Nilai</h2>
+                <ul class="list-disc list-inside text-muted-foreground leading-7 space-y-2">
+                    <li><b>Kolaborasi</b> : Kami percaya kekuatan tim lahir dari kebersamaan. Setiap ide dan tantangan dihadapi dengan saling dukung dan saling belajar.</li>
+                    <li><b>Ekspresi</b> : Setiap orang punya cara unik untuk bersuara. Kami memberi ruang agar semua anggota bisa mengekspresikan pikiran dan pengalaman secara percaya diri.</li>
+                    <li><b>Loyalitas</b> : Kami tumbuh karena rasa memiliki. Loyalitas bagi kami berarti komitmen untuk terus berkontribusi, menjaga kepercayaan, dan tumbuh bareng tim.</li>
+                    <li><b>Aksi Seru</b> : Setiap kegiatan dijalankan dengan semangat positif dan cara yang menyenangkan, karena belajar dan berubah akan lebih kuat saat dilakukan dengan energi yang seru.</li>
+                </ul>
+            </article>
+            <article class="about-card">
+                <h2 class="text-2xl font-semibold mb-3">Tim Kami</h2>
+                <p class="text-muted-foreground leading-7">
+                    Di balik Naik Kelas terdapat tim desainer dan pengembang untuk membuat program ini. Tim kami terdiri dari :
+                </p>
+                <ul class="list-disc list-inside text-muted-foreground leading-7 space-y-2">
+                    <li>Sponsorship : <b>Radite Arandityo Hermanus</b></li>
+                    <li>Kordinator  : <b>Nurul Aisyah Patuppu Solo</b> & <b>Aldythya Nugraha</b></li>
+                    <li>Kontributor : <b>Muhammad Naufal Hakim</b> & <b>Firlana Ghifara Rahmi Arsy</b></li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="portfolio-section">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-foreground">Portofolio Naik Kelas</h2>
+                <p class="text-muted-foreground mt-3 text-lg leading-7">
+                    Lihat berbagai proyek yang dikerjakan oleh peserta naik kelas. Setiap tautan "Lihat Portfolio" akan membawa Anda ke dokumentasi lengkap yang tersimpan di Google Drive.
+                </p>
+            </div>
+
+            <div class="portfolio-carousel" aria-live="polite">
+                <article class="portfolio-card">
+                    <h3 class="portfolio-title">Gamifikasi Job Ads & Job Apllication</h3>
+                    <p class="portfolio-desc">
+                        Tim Magia mengusung program gamifikasi yang digunakan didalam Job Ads & Job Apllication.
+                    </p>
+                    <a class="portfolio-action" href="https://docs.google.com/presentation/d/1uyeXfw1k7lQNBaIqz8dktaYOdplRN-0A/edit?usp=sharing&ouid=117872492753475592956&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Lihat Portfolio</a>
+                </article>
+
+                <article class="portfolio-card">
+                    <h3 class="portfolio-title">Recruitment Marketing 360%</h3>
+                    <p class="portfolio-desc">
+                        Tim Collaborunners mengusung Recruitment Marketing dengan metode 360% dengan memanfaatkan berbagai platform Sosial.
+                    </p>
+                    <a class="portfolio-action" href="https://docs.google.com/presentation/d/1bXtpJkeYBphPPYak5OCz4bwHj0WTew1_/edit?usp=sharing&ouid=117872492753475592956&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Lihat Portfolio</a>
+                </article>
+
+                <article class="portfolio-card">
+                    <h3 class="portfolio-title">Effective Job Advertisement & Application Framework</h3>
+                    <p class="portfolio-desc">
+                        Tim Purnakawan mengusung sebuah framework recruitment dengan simulasi merecrute DPR yang terbaik.
+                    </p>
+                    <a class="portfolio-action" href="https://docs.google.com/presentation/d/1Ftmxune864nPFdjFQ0RoLymTw4CiyMbm/edit?usp=sharing&ouid=117872492753475592956&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Lihat Portfolio</a>
+                </article>
+
+                <article class="portfolio-card">
+                    <h3 class="portfolio-title">Hasil dari Benchmark Tim Collaborunners</h3>
+                    <p class="portfolio-desc">
+                        Tim Collaborunners melakukan benchmark ke perusahaan Bank Jago & Bahana Sekuritas.
+                    </p>
+                    <a class="portfolio-action" href="https://docs.google.com/presentation/d/1wvhVVy_SoaG5CrW7k7LqIR2tJfr45-AR/edit?usp=sharing&ouid=117872492753475592956&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Lihat Portfolio</a>
+                </article>
+
+                 <article class="portfolio-card">
+                    <h3 class="portfolio-title">Hasil dari Benchmark Tim Purnakawan</h3>
+                    <p class="portfolio-desc">
+                        Tim Purnakawan melakukan benchmark ke perusahaan BLog & Kreta Api Indonesia.
+                    </p>
+                    <a class="portfolio-action" href="https://docs.google.com/presentation/d/1DHC8gcuWG3BGjYD-G7NQe_vaoDntxCVj/edit?usp=sharing&ouid=117872492753475592956&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Lihat Portfolio</a>
+                </article>
+
+                <article class="portfolio-card">
+                    <h3 class="portfolio-title">Hasil dari Benchmark Tim Magia</h3>
+                    <p class="portfolio-desc">
+                        Tim Magia melakukan benchmark ke perusahaan TWC & Tribhakti Inspektama.
+                    </p>
+                    <a class="portfolio-action" href="https://docs.google.com/presentation/d/1aFrpTihwoo3l8KAQWxjbwZzKrfU-90KU/edit?usp=sharing&ouid=117872492753475592956&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">Lihat Portfolio</a>
+                </article>
+
+                 <article class="portfolio-card">
+                    <h3 class="portfolio-title">Kumpulan Hasil PPT Kelas Cerita</h3>
+                    <p class="portfolio-desc">
+                        Ini merupakan kumpulan PPT yang dibuat oleh peserta untuk mengisi Kelas Cerita.
+                    </p>
+                    <a class="portfolio-action" href="https://drive.google.com/drive/folders/1nAyG7OSqRA61f1JJkOKTcKvMC-8HUVYI?usp=sharing" target="_blank" rel="noopener noreferrer">Lihat Portfolio</a>
+                </article>
+
+                <article class="portfolio-card">
+                    <h3 class="portfolio-title">Kumpulan Side Quest</h3>
+                    <p class="portfolio-desc">
+                        Ini merupakan kumpulan PPT Side Quest yang telah dilakukan.
+                    </p>
+                    <a class="portfolio-action" href="https://drive.google.com/drive/folders/1y-zWtDsNN96O0tdrTZ-ij9yXS2wo_U2M?usp=sharing" target="_blank" rel="noopener noreferrer">Lihat Portfolio</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer">
+        <p>&copy; 2025 NaikKelas. All rights reserved.</p>
+    </div>
+</body>
+</html>
